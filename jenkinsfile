@@ -2,30 +2,13 @@
 
 node('built-in')
 {
-    stage('ContDownload_master')
+    stage('ContDownload_loans')
     {
         cicd.newDownload("maven.git")
     }
-    stage('ContBuild_master')
+    stage('ContBuild_loans')
     {
         cicd.newBuild()
     }
-    stage('ContDeployment_master')
-    {
-        cicd.newDeploy("ScriptedPipelinewithsharedlibraries","172.31.32.68","testapp")
-    }
-    stage('ContTesting_master')
-    {
-         cicd.newDownload("FunctionalTesting.git")
-         cicd.runSelenium("ScriptedPipelinewithsharedlibraries")
-    }
-    stage('ContDelivery_master')
-    {
-        cicd.newDeploy("ScriptedPipelinewithsharedlibraries","172.31.32.210","prodapp")
-    }
-    
-    
-    
-    
+   
 }
-
